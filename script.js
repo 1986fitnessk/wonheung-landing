@@ -128,7 +128,8 @@ const coachList = document.querySelector('[data-coach-list]');
 (window.TRAINERS || []).forEach((coach, index) => {
   const card = document.createElement('article');
   card.className = 'coach-card';
-  const coachImages = coach.images.map((image) => `<figure><img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"></figure>`).join('');
+  const mosaicOrder = coach.images.length === 6 ? [3, 1, 4, 5, 0, 2] : coach.images.map((_, imageIndex) => imageIndex);
+  const coachImages = mosaicOrder.map((imageIndex) => coach.images[imageIndex]).map((image) => `<figure><img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"></figure>`).join('');
   card.innerHTML = `<div class="coach-media" data-count="${coach.images.length}">${coachImages}</div>`;
   coachList?.append(card);
 });
