@@ -28,6 +28,20 @@ document.querySelectorAll('[data-consult]').forEach((link) => {
   link.rel = 'noopener noreferrer';
 });
 
+const externalLinks = [
+  ['[data-map]', config.mapUrl],
+  ['[data-kakao]', config.kakaoUrl]
+];
+
+externalLinks.forEach(([selector, url]) => {
+  document.querySelectorAll(selector).forEach((link) => {
+    if (!url) return;
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+  });
+});
+
 document.querySelectorAll('[data-phone]').forEach((link) => {
   if (!config.phone) {
     link.addEventListener('click', (event) => event.preventDefault());
@@ -35,6 +49,28 @@ document.querySelectorAll('[data-phone]').forEach((link) => {
   }
   link.href = `tel:${config.phone.replace(/[^0-9+]/g, '')}`;
   link.removeAttribute('aria-disabled');
+});
+
+document.querySelectorAll('[data-consultation-phone]').forEach((link) => {
+  if (!config.consultationPhone) return;
+  link.href = `tel:${config.consultationPhone.replace(/[^0-9+]/g, '')}`;
+  link.textContent = config.consultationPhone;
+});
+
+const siteText = {
+  '[data-site-address]': config.address,
+  '[data-site-weekday-hours]': config.weekdayHours,
+  '[data-site-weekend-hours]': config.weekendHours,
+  '[data-site-closed-days]': config.closedDays,
+  '[data-site-parking]': config.parking,
+  '[data-site-phone]': config.phone
+};
+
+Object.entries(siteText).forEach(([selector, value]) => {
+  if (!value) return;
+  document.querySelectorAll(selector).forEach((element) => {
+    element.textContent = value;
+  });
 });
 
 const main = document.querySelector('main');
