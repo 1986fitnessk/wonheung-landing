@@ -128,8 +128,8 @@ const coachList = document.querySelector('[data-coach-list]');
 (window.TRAINERS || []).forEach((coach, index) => {
   const card = document.createElement('article');
   card.className = 'coach-card';
-  const coachImages = coach.images.map((image, imageIndex) => `<figure><img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"><figcaption><span>${String(imageIndex + 1).padStart(2, '0')}</span>${image.label || 'COACHING PROOF'}</figcaption></figure>`).join('');
-  card.innerHTML = `<div class="coach-summary"><div><p class="eyebrow">1986 COACH</p><h3>${coach.name}</h3></div><div class="coach-tags" aria-label="코칭 분야">${coach.specialties.map((item) => `<span>${item}</span>`).join('')}</div></div><div class="coach-media" data-count="${coach.images.length}">${coachImages}</div>`;
+  const coachImages = coach.images.map((image) => `<figure><img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"></figure>`).join('');
+  card.innerHTML = `<div class="coach-media" data-count="${coach.images.length}">${coachImages}</div>`;
   coachList?.append(card);
 });
 
