@@ -374,7 +374,7 @@ footer > p { margin: 0; font-size: 18px; line-height: 1.6; }
 .coach-tags { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; margin-bottom:18px; }
 .coach-tags span { padding:8px 10px; border:1px solid var(--dark-line); color:#d0cfc8; font-size:12px; }
 .coach-media { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:36px; }
-.coach-media[data-count="6"] { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.coach-media[data-count="6"] { grid-template-columns:repeat(2,minmax(0,1fr)); }
 .coach-media figure { min-width:0; margin:0; display:grid; grid-template-rows:minmax(0,1fr) 48px; overflow:hidden; border:1px solid var(--dark-line); background:#0b0b0a; }
 .coach-media img { display:block; width:100%; height:100%; aspect-ratio:4 / 3; object-fit:contain; background:#0b0b0a; transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .3s ease; }
 .coach-media figure:hover img { transform:scale(1.012); filter:brightness(1.06); }

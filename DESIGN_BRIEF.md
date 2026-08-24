@@ -125,3 +125,9 @@
 - Mobile transformation: 학습 갤러리는 2열 editorial collage를 유지하고, 코칭팀 proof 4장도 1열에서 2×2로 바꿔 한 화면 밀도를 높인다. 캡션은 42px 높이와 8–9px 영문으로 축소해 이미지 공간을 확보한다.
 - Acceptance: 모바일 390px에서 두 갤러리 모두 가로 overflow 없이 2열을 유지하고, 4개 코칭 분야 proof가 2×2로 보이는지 확인한다.
 - Verified: 로컬 데스크톱에서 학습 사진 3장과 코칭 proof 4장의 원본 로딩, 데스크톱 3열/2열 구성, 가로 overflow 0을 확인했다. 760px 이하 CSS에서 학습 갤러리는 첫 장 전체폭+아래 2장, 코칭 proof는 2×2로 전환된다.
+
+## Coaching proof priority update — 2026-08-24
+
+- Evidence: 사용자가 제공한 체형 변화 전후 사진과 웨딩 촬영 전후 사진은 각각 ‘체형 개선’과 ‘웨딩 PT’를 직접 보여주는 실제 결과 자료다.
+- Implementation: 두 자료를 `window.TRAINERS[0].images`의 첫 번째와 두 번째로 추가해 코칭 proof 갤러리의 맨 위 첫 줄에 배치한다. 기존 4장은 그대로 유지한다.
+- Responsive rule: 총 6장을 모든 화면에서 2열로 유지해 새 결과 자료가 첫 줄에서 나란히 보이고, 기존 자료는 아래 두 줄로 이어지게 한다.
