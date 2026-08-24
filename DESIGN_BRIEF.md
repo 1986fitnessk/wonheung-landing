@@ -112,6 +112,13 @@
 |---|---|---|---|---|---|
 | 제공된 리뷰 9장의 서로 다른 세로 길이 | 길이 차이를 숨기지 않는 실제 후기 wall | `.member-review-grid` | CSS columns 기반 masonry | 1열, 폭과 정렬만 교차 | 9장 동시 렌더·가로 overflow 0 |
 | 캡처 안의 반복되는 별점·시설 사진·후기 본문 | 실제 후기 자체를 장식보다 우선 | `.member-review-card img` | hover/focus 확대·정렬·밝기 | 확대량 축소 | 모든 원본 비율·본문 보존 |
+
+## Review matrix update — 2026-08-24
+
+- 실제 리뷰 9장은 데스크톱과 모바일 모두 3열 × 3행의 한눈에 보이는 매트릭스로 유지한다.
+- 서로 다른 원본 길이는 자르지 않고 카드 안에 `contain`으로 축소해 캡처 전체를 보존한다.
+- 진입 모션은 행 단위로 빠르게 이어지는 좌·중·우 순차 등장으로 구성해 작은 모바일 카드에서도 움직임이 인지되게 한다.
+- `prefers-reduced-motion` 환경에서는 모션 없이 즉시 전체 리뷰를 보여준다.
 | 사용자의 “파파파팍” 모션 요청 | 짧고 연속적인 증거 조립 | `reviewBurstObserver` / `script.js` | 55ms stagger, translate/scale/rotate | 거리·회전 축소 | 순차 delay와 reduced-motion 확인 |
 
 - Acceptance evidence: 로컬 1280px 화면에서 3열 masonry, 실제 이미지 9장 로딩, 리뷰 진행바 제거, 가로 overflow 0을 확인했다.

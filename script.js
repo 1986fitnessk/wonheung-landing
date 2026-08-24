@@ -145,6 +145,9 @@ const reviewGrid = document.querySelector('.member-review-grid');
 if (reviewGrid) {
   [...reviewGrid.querySelectorAll('.member-review-card')].forEach((card, index) => {
     card.style.setProperty('--review-index', index);
+    card.style.setProperty('--review-row', Math.floor(index / 3));
+    card.style.setProperty('--review-col', index % 3);
+    card.style.setProperty('--review-x', `${(index % 3 - 1) * 24}px`);
   });
 
   if (reduceMotion || !('IntersectionObserver' in window)) {
