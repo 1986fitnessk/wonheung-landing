@@ -73,7 +73,7 @@ if (facilityRail && window.SPACE_GALLERY?.length) {
   const filters = document.createElement('div');
   filters.className = 'space-filters';
   filters.setAttribute('aria-label', '공간 카테고리');
-  filters.innerHTML = [['all','ALL'],['weight','WEIGHT'],['cardio','CARDIO'],['care','PRIVATE CARE'],['shower','SHOWER']].map(([key,label], index) => `<button type="button" class="${index === 0 ? 'is-active' : ''}" data-filter="${key}">${label}</button>`).join('');
+  filters.innerHTML = [['all','ALL'],['weight','WEIGHT'],['care','PRIVATE CARE'],['shower','SHOWER']].map(([key,label], index) => `<button type="button" class="${index === 0 ? 'is-active' : ''}" data-filter="${key}">${label}</button>`).join('');
   facilityRail.before(filters);
   const renderSpaces = (filter = 'all') => {
     const items = window.SPACE_GALLERY.filter((item) => filter === 'all' || item.category === filter);
