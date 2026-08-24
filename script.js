@@ -2,6 +2,24 @@ const header = document.querySelector('[data-header]');
 const progress = document.querySelector('[data-page-progress]');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const config = window.SITE_CONFIG || {};
+const hero = document.querySelector('.hero-community');
+const heroMotionMedia = hero?.querySelector('.hero-motion-media');
+
+if (hero && heroMotionMedia && !reduceMotion) {
+  hero.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') return;
+    const rect = hero.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * -8;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * -6;
+    heroMotionMedia.style.setProperty('--hero-x', `${x.toFixed(2)}px`);
+    heroMotionMedia.style.setProperty('--hero-y', `${y.toFixed(2)}px`);
+  }, { passive: true });
+
+  hero.addEventListener('pointerleave', () => {
+    heroMotionMedia.style.setProperty('--hero-x', '0px');
+    heroMotionMedia.style.setProperty('--hero-y', '0px');
+  });
+}
 
 document.querySelectorAll('[data-consult]').forEach((link) => {
   if (!config.consultationUrl) return;
@@ -93,6 +111,10 @@ coachDialog?.addEventListener('click', (event) => { if (event.target === coachDi
 
 const syncPageState = () => {
   header?.classList.toggle('is-scrolled', window.scrollY > 24);
+
+  if (heroMotionMedia && !reduceMotion) {
+    heroMotionMedia.style.setProperty('--hero-scroll', `${Math.min(window.scrollY * 0.08, 18).toFixed(2)}px`);
+  }
 
   const scrollRange = document.documentElement.scrollHeight - window.innerHeight;
   const ratio = scrollRange > 0 ? Math.min(window.scrollY / scrollRange, 1) : 0;
