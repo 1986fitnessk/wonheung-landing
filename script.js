@@ -115,14 +115,14 @@ window.addEventListener('resize', syncPageState, { passive: true });
 
 const revealGroups = [
   '.section-index',
-  '.section-heading, .why-feature, .space-copy, .area-diagram, .member-reviews-head, .facility-archive-head, .facility-video, .training-intro, .training-main-visual, .assessment-heading, .assessment-feature, .trainer-culture, .experience-feature, .continuity-feature, .weekly-letter-head, .weekly-letter-gallery, .member-voice, .visit-copy, .visit-media, .faq-layout',
-  '.principle, .training-flow li, .assessment-card, .experience-list article, .continuity-track li'
+  '.section-heading, .why-feature, .space-copy, .area-diagram, .member-reviews-head, .facility-archive-head, .facility-video, .training-intro, .training-main-visual, .assessment-heading, .assessment-feature, .trainer-culture, .coaches-learning-gallery, .experience-feature, .continuity-feature, .weekly-letter-head, .weekly-letter-gallery, .member-voice, .visit-copy, .visit-media, .faq-layout',
+  '.principle, .training-flow li, .assessment-card, .coaches-learning-gallery figure, .experience-list article, .continuity-track li'
 ];
 
 const revealTargets = document.querySelectorAll(revealGroups.join(','));
 revealTargets.forEach((element, index) => {
   element.setAttribute('data-reveal', '');
-  if (element.matches('.principle, .training-flow li, .assessment-card, .experience-list article, .continuity-track li')) {
+  if (element.matches('.principle, .training-flow li, .assessment-card, .coaches-learning-gallery figure, .experience-list article, .continuity-track li')) {
     element.style.setProperty('--reveal-delay', `${(index % 4) * 70}ms`);
   }
 });

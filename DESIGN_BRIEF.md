@@ -117,3 +117,11 @@
 - Acceptance evidence: 로컬 1280px 화면에서 3열 masonry, 실제 이미지 9장 로딩, 리뷰 진행바 제거, 가로 overflow 0을 확인했다.
 - Mobile evidence: 760px 이하에서 columns 1, 카드 폭 96%, 짝수 카드 우측 4% 이동, 회전·등장 거리 축소 규칙을 확인했다. 320px에서도 카드 실너비가 뷰포트를 넘지 않는다.
 - Motion evidence: 카드별 `--review-index` 0–8과 55ms stagger를 적용했고, IntersectionObserver 진입 시 `is-burst-visible` 한 번만 실행되며 reduced-motion에서는 즉시 최종 상태가 된다.
+
+## Coaches density update — 2026-08-24
+
+- Evidence: 기존 코칭팀에 사용했던 `coach-barbell-explanation`, `coach-barbell-practice`, `coach-joint-check` 3장은 트레이너가 설명하고 직접 연습하며 회원의 움직임을 확인하는 실제 장면이다.
+- Implementation: ‘가르치는 사람이 계속 배우는 센터’ 제목 바로 아래에 3장짜리 `coaches-learning-gallery`를 배치해 제목의 증거로 연결한다. 아래 `coach-media`의 전문 자료 4장은 별도 1986 코칭팀 proof로 유지한다.
+- Mobile transformation: 학습 갤러리는 2열 editorial collage를 유지하고, 코칭팀 proof 4장도 1열에서 2×2로 바꿔 한 화면 밀도를 높인다. 캡션은 42px 높이와 8–9px 영문으로 축소해 이미지 공간을 확보한다.
+- Acceptance: 모바일 390px에서 두 갤러리 모두 가로 overflow 없이 2열을 유지하고, 4개 코칭 분야 proof가 2×2로 보이는지 확인한다.
+- Verified: 로컬 데스크톱에서 학습 사진 3장과 코칭 proof 4장의 원본 로딩, 데스크톱 3열/2열 구성, 가로 overflow 0을 확인했다. 760px 이하 CSS에서 학습 갤러리는 첫 장 전체폭+아래 2장, 코칭 proof는 2×2로 전환된다.

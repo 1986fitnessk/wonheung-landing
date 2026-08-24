@@ -354,6 +354,12 @@ footer > p { margin: 0; font-size: 18px; line-height: 1.6; }
 .training .inline-training-cta { margin-top:40px; }
 .training-proof { background:var(--white); }
 .proof-heading,.coaches-heading { display:grid; grid-template-columns:1fr 2fr; gap:40px; }
+.coaches-learning-gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:72px; }
+.coaches-learning-gallery figure { min-width:0; margin:0; display:grid; grid-template-rows:minmax(0,1fr) 44px; overflow:hidden; border:1px solid var(--dark-line); background:#0b0b0a; }
+.coaches-learning-gallery img { display:block; width:100%; height:auto; aspect-ratio:4 / 3; object-fit:contain; object-position:center; background:#0b0b0a; transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .35s ease; }
+.coaches-learning-gallery figure:hover img { transform:scale(1.018); filter:brightness(1.06); }
+.coaches-learning-gallery figcaption { display:flex; align-items:center; gap:14px; padding:0 14px; color:#aaa9a2; border-top:1px solid var(--dark-line); font:500 10px/1 "DM Sans",sans-serif; letter-spacing:.12em; }
+.coaches-learning-gallery figcaption span { color:var(--accent-soft); }
 .proof-cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:72px; }
 .proof-cards article { min-width:0; }
 .proof-cards img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:contain; background:var(--paper); }
@@ -400,13 +406,19 @@ footer > p { margin: 0; font-size: 18px; line-height: 1.6; }
   .hero > h1 { display:flex; margin:auto 0 28px; font-size:clamp(36px,10.4vw,48px); }
   .hero-bottom { display:flex; width:100%; gap:22px; }
   .proof-heading,.coaches-heading { grid-template-columns:1fr; gap:12px; }
+  .coaches-learning-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:40px; }
+  .coaches-learning-gallery figure:first-child { grid-column:1 / -1; }
+  .coaches-learning-gallery figure { grid-template-rows:minmax(0,1fr) 36px; }
+  .coaches-learning-gallery figcaption { gap:8px; padding:0 9px; font-size:8px; }
   .proof-cards { display:flex; gap:10px; margin-left:-20px; margin-right:-20px; padding:0 20px 14px; overflow-x:auto; scroll-snap-type:x mandatory; }
   .proof-cards article { flex:0 0 82vw; scroll-snap-align:center; }
   .proof-quote { margin-top:64px; padding:28px 22px; font-size:29px; }
   .coach-summary { grid-template-columns:1fr; gap:12px; }
   .coach-card h3 { font-size:31px; }
   .coach-tags { justify-content:flex-start; margin-bottom:0; }
-  .coach-media, .coach-media[data-count="6"] { grid-template-columns:1fr; gap:10px; margin-top:28px; }
+  .coach-media, .coach-media[data-count="6"] { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; margin-top:28px; }
+  .coach-media figure { grid-template-rows:minmax(0,1fr) 42px; }
+  .coach-media figcaption { gap:8px; padding:0 9px; font-size:8px; letter-spacing:.07em; }
   .member-reviews.section { padding-top:82px; padding-bottom:82px; }
   .space-filters { margin-left:-20px; margin-right:-20px; padding:0 20px 4px; }
   .hero { background-color:#090909; background-size:auto 48%; background-position:center 76px; background-repeat:no-repeat; }
