@@ -89,25 +89,13 @@ if (facilityRail && window.SPACE_GALLERY?.length) {
 }
 
 const coachList = document.querySelector('[data-coach-list]');
-const coachDialog = document.querySelector('[data-coach-dialog]');
-const coachDialogContent = document.querySelector('[data-dialog-content]');
 (window.TRAINERS || []).forEach((coach, index) => {
   const card = document.createElement('article');
   card.className = 'coach-card';
-  const coachImages = coach.images.map((image) => `<img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" loading="lazy">`).join('');
-  card.innerHTML = `<div class="coach-media">${coachImages}</div><div><p class="eyebrow">1986 COACH</p><h3>${coach.name}</h3><div class="coach-tags">${coach.specialties.map((item) => `<span>${item}</span>`).join('')}</div><button type="button" data-coach-index="${index}">코칭 방식 보기 →</button></div>`;
+  const coachImages = coach.images.map((image, imageIndex) => `<figure><img src="${image.src}" alt="${image.alt}" width="${image.width}" height="${image.height}" loading="lazy" decoding="async"><figcaption><span>${String(imageIndex + 1).padStart(2, '0')}</span>${image.label || 'COACHING PROOF'}</figcaption></figure>`).join('');
+  card.innerHTML = `<div class="coach-summary"><div><p class="eyebrow">1986 COACH</p><h3>${coach.name}</h3></div><div class="coach-tags" aria-label="코칭 분야">${coach.specialties.map((item) => `<span>${item}</span>`).join('')}</div></div><div class="coach-media" data-count="${coach.images.length}">${coachImages}</div>`;
   coachList?.append(card);
 });
-
-coachList?.addEventListener('click', (event) => {
-  const button = event.target.closest('[data-coach-index]');
-  if (!button || !coachDialog || !coachDialogContent) return;
-  const coach = window.TRAINERS[Number(button.dataset.coachIndex)];
-  coachDialogContent.innerHTML = `<p class="eyebrow">COACHING PHILOSOPHY</p><h2>${coach.name}</h2><p>${coach.philosophy}</p><h3>수업에서 중요하게 보는 것</h3><ul>${coach.education.map((item) => `<li>${item}</li>`).join('')}</ul>`;
-  coachDialog.showModal();
-});
-document.querySelector('[data-dialog-close]')?.addEventListener('click', () => coachDialog?.close());
-coachDialog?.addEventListener('click', (event) => { if (event.target === coachDialog) coachDialog.close(); });
 
 const syncPageState = () => {
   header?.classList.toggle('is-scrolled', window.scrollY > 24);

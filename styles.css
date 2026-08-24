@@ -347,19 +347,18 @@ footer > p { margin: 0; font-size: 18px; line-height: 1.6; }
 .proof-cards p { margin:0; color:var(--muted); font-size:14px; line-height:1.8; }
 .proof-quote { margin:100px 0 0; padding:58px; color:var(--white); background:var(--ink); font-size:clamp(34px,5vw,68px); line-height:1.28; letter-spacing:-.05em; }
 .coach-list { margin-top:72px; }
-.coach-card { display:grid; grid-template-columns:minmax(280px,.8fr) 1.2fr; gap:6vw; align-items:center; border-top:1px solid var(--dark-line); padding-top:30px; }
-.coach-media { display:flex; flex-direction:column; align-items:flex-start; padding-bottom:4%; }
-.coach-media img { display:block; width:70%; height:auto; object-fit:contain; background:#090909; }
-.coach-media img:nth-child(2) { width:64%; margin:-20% 0 0 auto; border:8px solid var(--ink); box-shadow:0 20px 50px rgba(0,0,0,.32); }
-.coach-media img:nth-child(3) { width:54%; margin:-14% 0 0 10%; border:8px solid var(--ink); box-shadow:0 20px 50px rgba(0,0,0,.32); }
+.coach-card { border-top:1px solid var(--dark-line); padding-top:30px; }
+.coach-summary { display:grid; grid-template-columns:minmax(240px,.65fr) 1.35fr; gap:6vw; align-items:end; }
 .coach-card h3 { margin:0 0 18px; font-size:clamp(30px,4vw,54px); font-weight:500; }
-.coach-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:28px; }
+.coach-tags { display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; margin-bottom:18px; }
 .coach-tags span { padding:8px 10px; border:1px solid var(--dark-line); color:#d0cfc8; font-size:12px; }
-.coach-card button { min-height:48px; padding:0 18px; color:#fff; background:transparent; border:1px solid #777; cursor:pointer; }
-.coach-dialog { width:min(620px,calc(100% - 32px)); padding:34px; color:var(--ink); background:var(--white); border:0; }
-.coach-dialog::backdrop { background:rgba(0,0,0,.72); }
-.coach-dialog > button { position:absolute; right:18px; top:14px; width:44px; height:44px; border:0; background:transparent; font-size:26px; cursor:pointer; }
-.coach-dialog h2 { font-size:34px; }.coach-dialog li { margin:10px 0; line-height:1.7; }
+.coach-media { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:36px; }
+.coach-media[data-count="6"] { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.coach-media figure { min-width:0; margin:0; display:grid; grid-template-rows:minmax(0,1fr) 48px; overflow:hidden; border:1px solid var(--dark-line); background:#0b0b0a; }
+.coach-media img { display:block; width:100%; height:100%; aspect-ratio:4 / 3; object-fit:contain; background:#0b0b0a; transition:transform .55s cubic-bezier(.2,.7,.2,1),filter .3s ease; }
+.coach-media figure:hover img { transform:scale(1.012); filter:brightness(1.06); }
+.coach-media figcaption { display:flex; align-items:center; gap:14px; padding:0 14px; color:#aaa9a2; border-top:1px solid var(--dark-line); font:500 10px/1 "DM Sans",sans-serif; letter-spacing:.1em; }
+.coach-media figcaption span { color:var(--accent-soft); }
 .mobile-sticky-cta { padding:0; }
 .mobile-sticky-cta a { flex:1; min-height:52px; display:flex; align-items:center; justify-content:center; }
 .mobile-sticky-cta a+a { border-left:1px solid rgba(255,255,255,.35); }
@@ -389,9 +388,10 @@ footer > p { margin: 0; font-size: 18px; line-height: 1.6; }
   .proof-cards { display:flex; gap:10px; margin-left:-20px; margin-right:-20px; padding:0 20px 14px; overflow-x:auto; scroll-snap-type:x mandatory; }
   .proof-cards article { flex:0 0 82vw; scroll-snap-align:center; }
   .proof-quote { margin-top:64px; padding:28px 22px; font-size:29px; }
-  .coach-card { grid-template-columns:1fr; gap:28px; }
+  .coach-summary { grid-template-columns:1fr; gap:12px; }
   .coach-card h3 { font-size:31px; }
-  .coach-dialog { padding:28px 22px; }
+  .coach-tags { justify-content:flex-start; margin-bottom:0; }
+  .coach-media, .coach-media[data-count="6"] { grid-template-columns:1fr; gap:10px; margin-top:28px; }
   .member-reviews.section { padding-top:82px; padding-bottom:82px; }
   .space-filters { margin-left:-20px; margin-right:-20px; padding:0 20px 4px; }
   .hero { background-color:#090909; background-size:auto 48%; background-position:center 76px; background-repeat:no-repeat; }
