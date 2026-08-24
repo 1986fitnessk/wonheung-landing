@@ -116,13 +116,13 @@ window.addEventListener('resize', syncPageState, { passive: true });
 const revealGroups = [
   '.section-index',
   '.section-heading, .why-feature, .space-copy, .area-diagram, .member-reviews-head, .facility-archive-head, .facility-video, .training-intro, .training-main-visual, .assessment-heading, .assessment-feature, .trainer-culture, .experience-feature, .continuity-feature, .weekly-letter-head, .weekly-letter-gallery, .member-voice, .visit-copy, .visit-media, .faq-layout',
-  '.principle, .member-review-card, .training-flow li, .assessment-card, .experience-list article, .continuity-track li'
+  '.principle, .training-flow li, .assessment-card, .experience-list article, .continuity-track li'
 ];
 
 const revealTargets = document.querySelectorAll(revealGroups.join(','));
 revealTargets.forEach((element, index) => {
   element.setAttribute('data-reveal', '');
-  if (element.matches('.principle, .member-review-card, .training-flow li, .assessment-card, .experience-list article, .continuity-track li')) {
+  if (element.matches('.principle, .training-flow li, .assessment-card, .experience-list article, .continuity-track li')) {
     element.style.setProperty('--reveal-delay', `${(index % 4) * 70}ms`);
   }
 });
@@ -139,6 +139,24 @@ if (reduceMotion || !('IntersectionObserver' in window)) {
   }, { threshold: 0.1, rootMargin: '0px 0px -48px' });
 
   revealTargets.forEach((element) => revealObserver.observe(element));
+}
+
+const reviewGrid = document.querySelector('.member-review-grid');
+if (reviewGrid) {
+  [...reviewGrid.querySelectorAll('.member-review-card')].forEach((card, index) => {
+    card.style.setProperty('--review-index', index);
+  });
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    reviewGrid.classList.add('is-burst-visible');
+  } else {
+    const reviewBurstObserver = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      reviewGrid.classList.add('is-burst-visible');
+      reviewBurstObserver.disconnect();
+    }, { threshold: 0.06, rootMargin: '0px 0px -32px' });
+    reviewBurstObserver.observe(reviewGrid);
+  }
 }
 
 const navLinks = [...document.querySelectorAll('.desktop-nav a[href^="#"]')];
@@ -195,7 +213,7 @@ if (centerVideo && 'IntersectionObserver' in window) {
 }
 
 const horizontalRails = document.querySelectorAll(
-  '.member-review-grid, .facility-rail, .assessment-gallery, .weekly-letter-gallery'
+  '.facility-rail, .assessment-gallery, .weekly-letter-gallery'
 );
 
 horizontalRails.forEach((rail) => {

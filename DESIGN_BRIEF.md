@@ -98,3 +98,22 @@
 - 데스크톱 가로 overflow 0, CTA 높이 48px 확인.
 - 760px 이하 사진 상단 크롭 및 360px 이하 카피·CTA 축소 규칙을 확인한다.
 - `prefers-reduced-motion`에서 사진·카피 애니메이션 제거 및 최종 상태 표시 규칙을 확인한다.
+
+## Review wall update — 2026-08-24
+
+- Product job: 실제 네이버 리뷰 9개를 넘기지 않고 한 화면 흐름에서 비교해 시설, 친절, 기구, 공간에 대한 반복 증거를 빠르게 인식하게 한다.
+- Supplied reference evidence: 사용자가 제공한 세로형 네이버 리뷰 캡처 9장은 높이가 468–679px로 서로 다르며, 이 길이 차이를 제거하지 않고 편집 디자인의 리듬으로 사용한다.
+- Signature composition: 동일 높이 카드 슬라이더 대신 3열 비대칭 masonry review wall. 카드 폭·회전·상하 위치를 미세하게 달리해 실제 후기들이 벽에 연속 부착되는 인상을 만든다.
+- Signature component: `Review Burst Wall` — 섹션 진입 시 카드가 중앙에서 짧은 간격으로 scale/translate/rotate 되며 연속 조립된다.
+- Motion storyboard: 헤더가 먼저 올라오고, 리뷰 카드 9개가 55ms 간격으로 520–680ms 동안 순차 등장한다. hover/focus에서 카드가 1.5% 확대되고 회전이 정렬되며, 이미지 밝기와 테두리가 함께 반응한다. reduced-motion에서는 최종 상태를 즉시 표시한다.
+- Mobile transformation: 가로 슬라이드와 진행바를 제거하고 1열로 전환한다. 카드 폭을 94–100%로 번갈아 배치하고 회전량을 절반으로 줄여 리뷰 본문 가독성을 유지한다.
+
+| Reference evidence | Extracted principle | Local component | Motion/state | Mobile translation | Acceptance evidence |
+|---|---|---|---|---|---|
+| 제공된 리뷰 9장의 서로 다른 세로 길이 | 길이 차이를 숨기지 않는 실제 후기 wall | `.member-review-grid` | CSS columns 기반 masonry | 1열, 폭과 정렬만 교차 | 9장 동시 렌더·가로 overflow 0 |
+| 캡처 안의 반복되는 별점·시설 사진·후기 본문 | 실제 후기 자체를 장식보다 우선 | `.member-review-card img` | hover/focus 확대·정렬·밝기 | 확대량 축소 | 모든 원본 비율·본문 보존 |
+| 사용자의 “파파파팍” 모션 요청 | 짧고 연속적인 증거 조립 | `reviewBurstObserver` / `script.js` | 55ms stagger, translate/scale/rotate | 거리·회전 축소 | 순차 delay와 reduced-motion 확인 |
+
+- Acceptance evidence: 로컬 1280px 화면에서 3열 masonry, 실제 이미지 9장 로딩, 리뷰 진행바 제거, 가로 overflow 0을 확인했다.
+- Mobile evidence: 760px 이하에서 columns 1, 카드 폭 96%, 짝수 카드 우측 4% 이동, 회전·등장 거리 축소 규칙을 확인했다. 320px에서도 카드 실너비가 뷰포트를 넘지 않는다.
+- Motion evidence: 카드별 `--review-index` 0–8과 55ms stagger를 적용했고, IntersectionObserver 진입 시 `is-burst-visible` 한 번만 실행되며 reduced-motion에서는 즉시 최종 상태가 된다.
