@@ -4,4 +4,4 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://1986fitnessk.github.io/sitemap.xml
+Sitemap: https://wonheung-landing.pages.dev/sitemap.xml
