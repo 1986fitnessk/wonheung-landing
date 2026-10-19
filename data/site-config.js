@@ -1,5 +1,5 @@
 window.SITE_CONFIG = {
-  consultationUrl: "https://m.booking.naver.com/booking/12/bizes/603554/items/4925065?startDateTime=2025-05-23T00%3A00%3A00%2B09%3A00",
+  consultationUrl: "https://m.booking.naver.com/booking/12/bizes/603554/items/4925065",
   talkUrl: "http://talk.naver.com/W40TZM",
   mapUrl: "https://map.naver.com/p/entry/place/1924563634",
   kakaoUrl: "http://pf.kakao.com/_TAsAb",
