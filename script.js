@@ -29,6 +29,7 @@ document.querySelectorAll('[data-consult]').forEach((link) => {
 });
 
 const externalLinks = [
+  ['[data-payment]', config.paymentUrl],
   ['[data-map]', config.mapUrl],
   ['[data-kakao]', config.kakaoUrl],
   ['[data-talk]', config.talkUrl]
@@ -56,6 +57,17 @@ document.querySelectorAll('[data-consultation-phone]').forEach((link) => {
   if (!config.consultationPhone) return;
   link.href = `tel:${config.consultationPhone.replace(/[^0-9+]/g, '')}`;
   link.textContent = config.consultationPhone;
+});
+
+const paymentDialog = document.querySelector('[data-payment-dialog]');
+document.querySelectorAll('[data-payment-open]').forEach((button) => {
+  button.addEventListener('click', () => paymentDialog?.showModal());
+});
+document.querySelectorAll('[data-payment-close]').forEach((button) => {
+  button.addEventListener('click', () => paymentDialog?.close());
+});
+paymentDialog?.addEventListener('click', (event) => {
+  if (event.target === paymentDialog) paymentDialog.close();
 });
 
 const siteText = {

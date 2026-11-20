@@ -28,7 +28,7 @@
   <meta name="theme-color" content="#11110f">
   <link rel="shortcut icon" href="https://wonheung-landing.pages.dev/favicon.svg" type="image/svg+xml">
   <title>1986피트니스 원흥점 | 원흥역 헬스장·PT</title>
-  <link rel="stylesheet" href="styles.css?v=42">
+  <link rel="stylesheet" href="styles.css?v=46">
   <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@graph": [
@@ -358,7 +358,7 @@
     }
   ]
 }</script>
-  <script src="data/site-config.js?v=3" defer></script><script src="data/trainers.js?v=7" defer></script><script src="data/gallery.js?v=2" defer></script><script src="script.js?v=24" defer></script>
+  <script src="data/site-config.js?v=4" defer></script><script src="data/trainers.js?v=7" defer></script><script src="data/gallery.js?v=2" defer></script><script src="script.js?v=27" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -714,6 +714,22 @@
     <p class="copyright">© 1986 FITNESS WONHEUNG</p>
   </footer>
 
-  <div class="mobile-sticky-cta"><a data-consult data-event="visit_consultation" href="https://m.booking.naver.com/booking/12/bizes/603554/items/4925065">방문 상담</a><a data-talk data-event="talk_consultation" href="http://talk.naver.com/W40TZM">톡톡 문의</a></div>
+  <div class="mobile-sticky-cta" aria-label="빠른 메뉴"><a data-consult data-event="visit_consultation" href="https://m.booking.naver.com/booking/12/bizes/603554/items/4925065">방문상담</a><a data-talk data-event="talk_consultation" href="http://talk.naver.com/W40TZM">톡톡문의</a><button type="button" data-payment-open data-event="membership_payment_open">회원권결제</button></div>
+
+  <dialog class="payment-dialog" data-payment-dialog aria-labelledby="payment-dialog-title">
+    <div class="payment-dialog-panel">
+      <button class="payment-dialog-close" type="button" data-payment-close aria-label="결제 안내 닫기">×</button>
+      <div class="payment-dialog-meta"><p class="eyebrow">1986 FITNESS WONHEUNG</p><span>VAT INCLUDED</span></div>
+      <h2 id="payment-dialog-title">회원권 결제 안내</h2>
+      <p class="payment-dialog-intro">운동을 이어갈 기간을 선택하고<br>브로제이에서 안전하게 결제해 주세요.</p>
+      <div class="payment-options" aria-label="회원권 가격">
+        <div><p><strong>1년</strong><small>12 MONTHS</small></p><span>264,000<em>원</em></span></div>
+        <div><p><strong>6개월</strong><small>6 MONTHS</small></p><span>209,000<em>원</em></span></div>
+        <div><p><strong>3개월</strong><small>3 MONTHS</small></p><span>150,000<em>원</em></span></div>
+      </div>
+      <p class="payment-vat"><span aria-hidden="true">✓</span> 모든 금액은 VAT 포함 가격입니다.</p>
+      <a class="primary-button payment-submit" data-payment data-event="membership_payment" href="https://bmarket.broj.co.kr/groups/622976731">브로제이에서 결제하기 <span aria-hidden="true">↗</span></a>
+    </div>
+  </dialog>
 </body>
 </html>
